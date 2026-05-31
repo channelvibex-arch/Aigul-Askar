@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Приглашение на свадьбу | Аскар & Айгуль</title>
-  <!-- Google Fonts: элегантный шрифт для заголовков и читаемый для текста -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -41,7 +41,6 @@
       letter-spacing: 0.02em;
     }
 
-    /* Декоративные фоновые элементы */
     .bg-decoration {
       position: fixed;
       top: 0;
@@ -64,7 +63,6 @@
       z-index: 2;
     }
 
-    /* Секции */
     section {
       margin: 3rem 0;
       padding: 2.5rem 2rem;
@@ -80,7 +78,6 @@
       transform: translateY(-3px);
     }
 
-    /* Hero */
     .hero {
       text-align: center;
       padding: 3rem 2rem;
@@ -153,7 +150,6 @@
       font-style: italic;
     }
 
-    /* Секция таймера */
     .countdown {
       display: flex;
       justify-content: center;
@@ -188,7 +184,6 @@
       margin-top: 0.3rem;
     }
 
-    /* Заголовки секций */
     .section-title {
       font-size: 2.8rem;
       color: var(--deep-purple);
@@ -211,7 +206,6 @@
       border-radius: 5px;
     }
 
-    /* Детали */
     .details-grid {
       display: flex;
       flex-wrap: wrap;
@@ -329,7 +323,7 @@
       transform: translateY(2px);
     }
 
-    /* Лепестки (анимация) */
+    /* Лепестки */
     .petals-container {
       position: fixed;
       top: 0;
@@ -365,7 +359,6 @@
       }
     }
 
-    /* Музыкальная кнопка (опционально) */
     .music-note {
       position: fixed;
       bottom: 20px;
@@ -415,14 +408,9 @@
   </style>
 </head>
 <body>
-  <!-- Декоративный фон -->
   <div class="bg-decoration"></div>
-
-  <!-- Падающие лепестки -->
   <div class="petals-container" id="petals"></div>
-
-  <!-- Кнопка "музыка" (декоративная) -->
-  <div class="music-note" id="musicToggle" title="Включить/выключить анимацию">🎵</div>
+  <div class="music-note" id="musicToggle" title="Вкл/выкл анимацию">🎵</div>
 
   <div class="container">
     <!-- Hero -->
@@ -445,7 +433,7 @@
       </div>
     </section>
 
-    <!-- Детали мероприятия -->
+    <!-- Детали -->
     <section>
       <h2 class="section-title">Детали</h2>
       <div class="details-grid">
@@ -472,21 +460,24 @@
       </p>
     </section>
 
-    <!-- RSVP форма -->
+    <!-- RSVP форма (отправка в Google Таблицу через Apps Script) -->
     <section>
       <h2 class="section-title">Подтверждение</h2>
-      <form class="rsvp-form" id="rsvpForm">
+      <form class="rsvp-form" id="rsvpForm"
+            action="https://script.google.com/macros/s/ВАШ_КОД/exec"
+            method="POST">
+
         <div class="form-row">
           <div class="form-group">
-            <input type="text" placeholder="Ваше имя" required>
+            <input type="text" name="name" placeholder="Ваше имя" required>
           </div>
           <div class="form-group">
-            <input type="text" placeholder="Фамилия" required>
+            <input type="text" name="surname" placeholder="Фамилия" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <select required>
+            <select name="attendance" required>
               <option value="" disabled selected>Я буду...</option>
               <option>Один / Одна</option>
               <option>С парой</option>
@@ -494,7 +485,7 @@
             </select>
           </div>
         </div>
-        <textarea rows="3" placeholder="Пожелания по алкоголю или аллергия на еду..."></textarea>
+        <textarea name="message" rows="3" placeholder="Пожелания по алкоголю или аллергия на еду..."></textarea>
         <button type="submit" class="btn">Отправить</button>
       </form>
     </section>
@@ -507,8 +498,7 @@
 
   <script>
     (function() {
-      // ---------- Таймер обратного отсчета ----------
-      // Установите дату свадьбы: 15 июля 2026, 15:30 (по вашему часовому поясу)
+      // Таймер до 14 августа 2026, 18:00
       const weddingDate = new Date('2026-08-14T18:00:00').getTime();
 
       function updateCountdown() {
@@ -537,19 +527,19 @@
       updateCountdown();
       setInterval(updateCountdown, 1000);
 
-      // ---------- Падающие лепестки ----------
+      // Падающие лепестки
       const petalsContainer = document.getElementById('petals');
       const colors = ['#ac91c4', '#d2ac4b', '#ffd51e', '#7c678e', '#668060'];
       
       function createPetal() {
         const petal = document.createElement('div');
         petal.classList.add('petal');
-        const size = Math.floor(Math.random() * 14) + 10; // 10-24px
+        const size = Math.floor(Math.random() * 14) + 10;
         petal.style.width = size + 'px';
         petal.style.height = size + 'px';
         petal.style.left = Math.random() * 100 + '%';
         petal.style.background = colors[Math.floor(Math.random() * colors.length)];
-        petal.style.animationDuration = Math.random() * 8 + 10 + 's'; // 10-18s
+        petal.style.animationDuration = Math.random() * 8 + 10 + 's';
         petal.style.opacity = Math.random() * 0.4 + 0.15;
         petalsContainer.appendChild(petal);
 
@@ -560,21 +550,20 @@
         }, 18000);
       }
 
-      // Создаем лепестки каждые 600 мс
       setInterval(createPetal, 700);
-      // Несколько начальных
       for (let i = 0; i < 8; i++) {
         setTimeout(createPetal, i * 150);
       }
 
-      // ---------- Обработка формы RSVP ----------
+      // Отправка формы в Apps Script (без preventDefault!)
       document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('✨ Спасибо! Ваше подтверждение получено. Мы свяжемся с вами ближе к дате. Ждём вас!');
-        this.reset();
+        setTimeout(function() {
+          alert('✨ Спасибо! Ваше подтверждение получено. Ждём вас!');
+          document.getElementById('rsvpForm').reset();
+        }, 500);
       });
 
-      // ---------- Кнопка "музыка" (анимация лепестков вкл/выкл) ----------
+      // Кнопка музыки (скрытие лепестков)
       let petalsActive = true;
       const musicBtn = document.getElementById('musicToggle');
       musicBtn.addEventListener('click', function() {
@@ -589,7 +578,6 @@
           musicBtn.style.background = '#f0e6d2';
         }
       });
-
     })();
   </script>
 </body>
