@@ -27,7 +27,7 @@
     }
     h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
 
-    /* Фоновые градиенты */
+    /* Фоновые градиенты (декоративные) */
     .bg-decoration {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none; z-index: 0; opacity: 0.08;
@@ -36,34 +36,21 @@
                   radial-gradient(circle at 40% 80%, var(--gold) 0%, transparent 30%);
     }
 
-    /* Фиксированная картинка справа */
+    /* Полноэкранное фоновое изображение */
     .side-image {
       position: fixed;
-      right: 0;                 /* ← теперь справа */
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
       pointer-events: none;
       opacity: 0.7;
-      width: 300px;
-      max-width: 25vw;
-      animation: fadeIn 2s ease;
     }
     .side-image img {
       width: 100%;
-      height: auto;
-      display: block;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 0.7; }
-    }
-    @media (max-width: 768px) {
-      .side-image {
-        opacity: 0.4;
-        width: 180px;
-        max-width: 35vw;
-      }
+      height: 100%;
+      object-fit: cover;
     }
 
     .container { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; position: relative; z-index: 2; }
@@ -182,13 +169,13 @@
 <body>
   <div class="bg-decoration"></div>
   
-  <!-- Картинка справа (фиксированная) -->
+  <!-- Полноэкранное фоновое изображение -->
   <div class="side-image">
     <img src="https://raw.githubusercontent.com/channelvibex-arch/wedding/main/mvknp_7ZHyiDnLfXCK1QZnf6cSpPJhUwBySDT-kjDI2QCZLzsZobgWVd7141ffpwctx3rA.jpg" alt="" />
   </div>
 
   <div class="petals-container" id="petals"></div>
-  <div class="music-note" id="musicToggle" title="Вкл/выкл анимацию">🎵</div>
+  <div class="music-note" id="musicToggle" title="Вкл/выкл анимацию">🍂</div>
 
   <div class="container">
     <section class="hero">
@@ -237,9 +224,8 @@
 
     <section>
       <h2 class="section-title">Подтверждение</h2>
-      <!-- ВАЖНО: замените ВАШ_КОД на реальный URL скрипта Apps Script -->
       <form class="rsvp-form" id="rsvpForm"
-            action="https://script.google.com/macros/s/ВАШ_КОД/exec"
+            action="https://script.google.com/macros/s/AKfycbyG-3Ctv1EMroC3CQ5raIKsZtosir7cWnzr1Sh-wJlVsFtfetA63yWe0En437Rm4Ytm/exec"
             method="POST">
 
         <div class="form-row">
@@ -342,18 +328,18 @@
         });
       });
 
-      // Кнопка "музыка" (скрытие лепестков)
+      // Кнопка "🍂" – управление лепестками
       let petalsActive = true;
       const musicBtn = document.getElementById('musicToggle');
       musicBtn.addEventListener('click', function() {
         petalsActive = !petalsActive;
         if (petalsActive) {
           petalsContainer.style.display = 'block';
-          musicBtn.textContent = '🎵';
+          musicBtn.textContent = '🍂';
           musicBtn.style.background = 'rgba(255,255,255,0.9)';
         } else {
           petalsContainer.style.display = 'none';
-          musicBtn.textContent = '🔇';
+          musicBtn.textContent = '❌';
           musicBtn.style.background = '#f0e6d2';
         }
       });
