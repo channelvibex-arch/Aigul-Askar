@@ -26,6 +26,8 @@
       overflow-x: hidden;
     }
     h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+
+    /* Фоновые градиенты */
     .bg-decoration {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none; z-index: 0; opacity: 0.08;
@@ -33,6 +35,37 @@
                   radial-gradient(circle at 80% 70%, var(--sage-green) 0%, transparent 40%),
                   radial-gradient(circle at 40% 80%, var(--gold) 0%, transparent 30%);
     }
+
+    /* Фиксированная картинка справа */
+    .side-image {
+      position: fixed;
+      right: 0;                 /* ← теперь справа */
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.7;
+      width: 300px;
+      max-width: 25vw;
+      animation: fadeIn 2s ease;
+    }
+    .side-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 0.7; }
+    }
+    @media (max-width: 768px) {
+      .side-image {
+        opacity: 0.4;
+        width: 180px;
+        max-width: 35vw;
+      }
+    }
+
     .container { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; position: relative; z-index: 2; }
     section {
       margin: 3rem 0; padding: 2.5rem 2rem;
@@ -63,7 +96,8 @@
     }
     .hero .and-symbol { font-size: 2.5rem; color: var(--gold); margin: 0.5rem 0; font-style: italic; display: block; }
     .hero .date {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 500; color: var(--sage-green); letter-spacing: 0.1em;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 500; color: var(--sage-green); letter-spacing: 0.1em;
       margin-top: 0.5rem; background: rgba(172,145,196,0.1); display: inline-block;
       padding: 0.5rem 2rem; border-radius: 50px; backdrop-filter: blur(4px);
     }
@@ -147,6 +181,12 @@
 </head>
 <body>
   <div class="bg-decoration"></div>
+  
+  <!-- Картинка справа (фиксированная) -->
+  <div class="side-image">
+    <img src="https://raw.githubusercontent.com/channelvibex-arch/wedding/main/mvknp_7ZHyiDnLfXCK1QZnf6cSpPJhUwBySDT-kjDI2QCZLzsZobgWVd7141ffpwctx3rA.jpg" alt="" />
+  </div>
+
   <div class="petals-container" id="petals"></div>
   <div class="music-note" id="musicToggle" title="Вкл/выкл анимацию">🎵</div>
 
@@ -180,7 +220,7 @@
         <div class="detail-card">
           <div class="detail-icon">🕒</div>
           <h3>Сбор гостей</h3>
-          <p class="time-highlight">16:45</p>
+          <p class="time-highlight">18:00</p>
           <p>Фуршет и приветствие</p>
         </div>
         <div class="detail-card">
@@ -197,9 +237,9 @@
 
     <section>
       <h2 class="section-title">Подтверждение</h2>
-      <!-- ВАЖНО: замените ВАШ_КОД на реальный URL скрипта -->
+      <!-- ВАЖНО: замените ВАШ_КОД на реальный URL скрипта Apps Script -->
       <form class="rsvp-form" id="rsvpForm"
-            action="https://script.google.com/macros/s/AKfycbyG-3Ctv1EMroC3CQ5raIKsZtosir7cWnzr1Sh-wJlVsFtfetA63yWe0En437Rm4Ytm/exec"
+            action="https://script.google.com/macros/s/ВАШ_КОД/exec"
             method="POST">
 
         <div class="form-row">
@@ -277,9 +317,9 @@
       setInterval(createPetal, 700);
       for (let i = 0; i < 8; i++) setTimeout(createPetal, i * 150);
 
-      // *** АСИНХРОННАЯ ОТПРАВКА ФОРМЫ (без редиректа) ***
+      // Асинхронная отправка формы
       document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-        e.preventDefault(); // блокируем стандартную отправку
+        e.preventDefault();
         var form = this;
         var formData = new FormData(form);
         var params = new URLSearchParams(formData).toString();
@@ -302,18 +342,18 @@
         });
       });
 
-      // Кнопка музыки (скрытие лепестков)
+      // Кнопка "музыка" (скрытие лепестков)
       let petalsActive = true;
       const musicBtn = document.getElementById('musicToggle');
       musicBtn.addEventListener('click', function() {
         petalsActive = !petalsActive;
         if (petalsActive) {
           petalsContainer.style.display = 'block';
-          musicBtn.textContent = '🍃';
+          musicBtn.textContent = '🎵';
           musicBtn.style.background = 'rgba(255,255,255,0.9)';
         } else {
           petalsContainer.style.display = 'none';
-          musicBtn.textContent = '❌';
+          musicBtn.textContent = '🔇';
           musicBtn.style.background = '#f0e6d2';
         }
       });
