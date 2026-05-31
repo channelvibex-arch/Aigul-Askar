@@ -555,14 +555,31 @@
         setTimeout(createPetal, i * 150);
       }
 
-      // Отправка формы в Apps Script (без preventDefault!)
-      document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-        setTimeout(function() {
-          alert('✨ Спасибо! Ваше подтверждение получено. Ждём вас!');
-          document.getElementById('rsvpForm').reset();
-        }, 500);
-      });
+// Отправка формы через fetch (без редиректа)
+document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // Останавливаем стандартную отправку
 
+  var form = this;
+  var formData = new FormData(form);
+  var params = new URLSearchParams(formData).toString();
+
+  fetch(form.action, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: params
+  })
+  .then(function(response) {
+    if (response.ok) {
+      alert('✨ Спасибо! Ваше подтверждение получено. Ждём вас!');
+      form.reset();
+    } else {
+      alert('⚠️ Что-то пошло не так. Попробуйте ещё раз или свяжитесь с нами другим способом.');
+    }
+  })
+  .catch(function() {
+    alert('⚠️ Ошибка соединения. Проверьте интернет и попробуйте снова.');
+  });
+});
       // Кнопка музыки (скрытие лепестков)
       let petalsActive = true;
       const musicBtn = document.getElementById('musicToggle');
