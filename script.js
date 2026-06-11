@@ -316,11 +316,11 @@ function setLanguage(lang) {
 
     // Замена изображений (если нужны версии на другом языке)
     const imgMappings = {
-        'names': lang === 'en' ? 'Images/names_en.png' : 'Images/names.png',
-        'endname': lang === 'en' ? 'Images/endname_en.png' : 'Images/endname.png',
-        'lemon': lang === 'en' ? 'Images/lemon_en.png' : 'Images/lemon.png',
-        'endlem': lang === 'en' ? 'Images/endlem_en.png' : 'Images/endlem.png',
-        'pallete': lang === 'en' ? 'Images/pallete_en.png' : 'Images/pallete.png'
+        'names': lang === 'en' ? 'Images/names_en.webp' : 'Images/names.webp',
+        'endname': lang === 'en' ? 'Images/endname_en.webp' : 'Images/endname.webp',
+        'lemon': lang === 'en' ? 'Images/lemon_en.webp' : 'Images/lemon.webp',
+        'endlem': lang === 'en' ? 'Images/endlem_en.webp' : 'Images/endlem.webp',
+        'pallete': lang === 'en' ? 'Images/pallete_en.webp' : 'Images/pallete.webp'
     };
     document.querySelectorAll('[data-i18n-img]').forEach(el => {
         const key = el.getAttribute('data-i18n-img');
