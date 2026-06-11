@@ -318,8 +318,6 @@ function setLanguage(lang) {
     const imgMappings = {
         'names': lang === 'en' ? 'Images/names_en.webp' : 'Images/names.webp',
         'endname': lang === 'en' ? 'Images/endname_en.webp' : 'Images/endname.webp',
-        'lemon': lang === 'en' ? 'Images/lemon_en.webp' : 'Images/lemon.webp',
-        'endlem': lang === 'en' ? 'Images/endlem_en.webp' : 'Images/endlem.webp',
         'pallete': lang === 'en' ? 'Images/pallete_en.webp' : 'Images/pallete.webp'
     };
     document.querySelectorAll('[data-i18n-img]').forEach(el => {
