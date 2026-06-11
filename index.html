@@ -1,349 +1,272 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Приглашение на свадьбу | Аскар & Айгуль</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --golden-yellow: #ffd51e;
-      --gold: #d2ac4b;
-      --lavender: #ac91c4;
-      --deep-purple: #7c678e;
-      --sage-green: #668060;
-      --soft-white: #fcf9f2;
-      --dark-text: #2e2b2a;
-    }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: var(--soft-white);
-      color: var(--dark-text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Айгуль и Аскар | 14.08.2026</title>
 
-    /* Фоновые градиенты (декоративные) */
-    .bg-decoration {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none; z-index: 0; opacity: 0.08;
-      background: radial-gradient(circle at 20% 30%, var(--lavender) 0%, transparent 40%),
-                  radial-gradient(circle at 80% 70%, var(--sage-green) 0%, transparent 40%),
-                  radial-gradient(circle at 40% 80%, var(--gold) 0%, transparent 30%);
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    /* Полноэкранное фоновое изображение */
-    .side-image {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.7;
-    }
-    .side-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    .container { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; position: relative; z-index: 2; }
-    section {
-      margin: 3rem 0; padding: 2.5rem 2rem;
-      background: rgba(255,255,255,0.7); backdrop-filter: blur(12px);
-      border-radius: 2.5rem; box-shadow: 0 20px 45px rgba(124,103,142,0.12), 0 5px 15px rgba(0,0,0,0.03);
-      border: 1px solid rgba(210,172,75,0.25); transition: transform 0.3s;
-    }
-    section:hover { transform: translateY(-3px); }
-    .hero {
-      text-align: center; padding: 3rem 2rem;
-      background: linear-gradient(145deg, rgba(255,255,255,0.8) 0%, rgba(255,245,235,0.7) 100%);
-      border: 1px solid var(--gold); position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: ""; position: absolute; top: -30px; left: -30px; width: 150px; height: 150px;
-      background: radial-gradient(circle, var(--golden-yellow) 0%, transparent 70%);
-      opacity: 0.2; border-radius: 50%;
-    }
-    .hero::after {
-      content: ""; position: absolute; bottom: -40px; right: -30px; width: 180px; height: 180px;
-      background: radial-gradient(circle, var(--lavender) 0%, transparent 70%);
-      opacity: 0.25; border-radius: 50%;
-    }
-    .hero h1 {
-      font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 700; color: var(--deep-purple);
-      margin-bottom: 0.25rem; position: relative; z-index: 1;
-      text-shadow: 2px 2px 0 rgba(255,213,30,0.2);
-    }
-    .hero .and-symbol { font-size: 2.5rem; color: var(--gold); margin: 0.5rem 0; font-style: italic; display: block; }
-    .hero .date {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem; font-weight: 500; color: var(--sage-green); letter-spacing: 0.1em;
-      margin-top: 0.5rem; background: rgba(172,145,196,0.1); display: inline-block;
-      padding: 0.5rem 2rem; border-radius: 50px; backdrop-filter: blur(4px);
-    }
-    .hero p { font-size: 1.2rem; color: var(--deep-purple); margin-top: 1.5rem; font-style: italic; }
-    .countdown { display: flex; justify-content: center; gap: 1.8rem; flex-wrap: wrap; margin: 2rem 0 1rem; }
-    .countdown-item {
-      background: white; padding: 1.2rem 1.5rem; border-radius: 2rem; min-width: 85px;
-      box-shadow: 0 10px 25px rgba(124,103,142,0.18); border: 1px solid var(--lavender);
-      background: linear-gradient(to bottom, #ffffff, #faf7fc);
-    }
-    .countdown-number { font-size: 2.8rem; font-weight: 700; color: var(--deep-purple); line-height: 1; }
-    .countdown-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--sage-green); margin-top: 0.3rem; }
-    .section-title {
-      font-size: 2.8rem; color: var(--deep-purple); text-align: center; margin-bottom: 1.8rem;
-      position: relative; display: inline-block; left: 50%; transform: translateX(-50%);
-    }
-    .section-title::after {
-      content: ""; position: absolute; bottom: -10px; left: 20%; width: 60%; height: 3px;
-      background: linear-gradient(90deg, var(--golden-yellow), var(--gold), var(--golden-yellow));
-      border-radius: 5px;
-    }
-    .details-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2rem; }
-    .detail-card {
-      flex: 1 1 240px; background: rgba(255,255,255,0.7); backdrop-filter: blur(8px);
-      padding: 2rem 1.5rem; border-radius: 2rem; text-align: center;
-      border: 1px solid rgba(210,172,75,0.3); transition: all 0.3s;
-    }
-    .detail-card:hover { border-color: var(--golden-yellow); box-shadow: 0 15px 30px rgba(210,172,75,0.15); }
-    .detail-icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--gold); }
-    .detail-card h3 { font-size: 1.8rem; color: var(--deep-purple); margin-bottom: 0.5rem; }
-    .detail-card p { color: #3a3a3a; }
-    .time-highlight { font-weight: 600; color: var(--sage-green); }
-    .rsvp-form { display: flex; flex-direction: column; gap: 1.5rem; max-width: 550px; margin: 2rem auto 0; }
-    .form-row { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .form-group { flex: 1 1 200px; }
-    input, select, textarea {
-      width: 100%; padding: 0.9rem 1.2rem; border: 1px solid var(--lavender);
-      border-radius: 2.5rem; font-family: 'Montserrat', sans-serif;
-      background: rgba(255,255,255,0.8); backdrop-filter: blur(4px);
-      transition: all 0.25s; font-size: 0.95rem; outline: none;
-    }
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--golden-yellow); box-shadow: 0 0 0 4px rgba(255,213,30,0.2); background: white;
-    }
-    textarea { border-radius: 1.8rem; resize: vertical; }
-    .btn {
-      background: linear-gradient(135deg, #d2ac4b 0%, #b8912f 100%);
-      border: none; padding: 1rem 2.5rem; border-radius: 3rem; font-weight: 600;
-      font-size: 1.1rem; letter-spacing: 0.05em; color: white; cursor: pointer;
-      transition: all 0.3s; box-shadow: 0 10px 20px rgba(210,172,75,0.35);
-      text-transform: uppercase; align-self: center; margin-top: 0.5rem;
-      border: 1px solid rgba(255,213,30,0.5);
-    }
-    .btn:hover { background: linear-gradient(135deg, #e6be54 0%, #c9a133 100%); transform: translateY(-2px); }
-    .btn:active { transform: translateY(2px); }
-    .petals-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
-    .petal {
-      position: absolute; width: 18px; height: 18px; background: var(--lavender);
-      border-radius: 100% 0 100% 0; opacity: 0.3; animation: fall linear infinite; transform: rotate(45deg);
-    }
-    @keyframes fall {
-      0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.3; }
-      80% { opacity: 0.25; }
-      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-    }
-    .music-note {
-      position: fixed; bottom: 20px; right: 20px; background: white; border-radius: 50%;
-      width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1); cursor: pointer; z-index: 99;
-      border: 1px solid var(--gold); font-size: 1.5rem; background: rgba(255,255,255,0.9);
-      backdrop-filter: blur(8px); transition: 0.3s;
-    }
-    .music-note:hover { background: var(--golden-yellow); }
-    footer { text-align: center; margin-top: 2rem; color: var(--deep-purple); font-size: 0.9rem; opacity: 0.8; }
-    @media (max-width: 600px) {
-      section { padding: 1.8rem 1.2rem; margin: 2rem 0; }
-      .countdown { gap: 0.8rem; }
-      .countdown-item { padding: 0.8rem 1rem; min-width: 70px; }
-    }
-  </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="bg-decoration"></div>
-  
-  <!-- Полноэкранное фоновое изображение -->
-  <div class="side-image">
-    <img src="https://raw.githubusercontent.com/channelvibex-arch/wedding/main/mvknp_7ZHyiDnLfXCK1QZnf6cSpPJhUwBySDT-kjDI2QCZLzsZobgWVd7141ffpwctx3rA.jpg" alt="" />
-  </div>
 
-  <div class="petals-container" id="petals"></div>
-  <div class="music-note" id="musicToggle" title="Вкл/выкл анимацию">🍂</div>
+    <!-- Фиксированные изображения по краям (задний план) -->
+    <img src="Images/lavenleft.png" alt="" class="fixed-bg left-bg">
+    <img src="Images/lavenright.png" alt="" class="fixed-bg right-bg">
 
-  <div class="container">
-    <section class="hero">
-      <h1>Аскар</h1>
-      <span class="and-symbol">&</span>
-      <h1>Айгуль</h1>
-      <div class="date">14 · 08 · 2026</div>
-      <p>Мы приглашаем вас разделить с нами самый счастливый день!</p>
+    <div class="decor-left"></div>
+    <div class="decor-right"></div>
+
+    <header class="header">
+        <div class="language-switch">
+            <button class="lang-btn" data-lang="ru">🇷🇺</button>
+            <button class="lang-btn" data-lang="en">🇬🇧</button>
+            <div class="lang-slider"></div>
+        </div>
+        <div class="logo">
+            <img src="Images/logo.jpg" alt="Логотип">
+        </div>
+        <button class="burger">☰</button>
+    </header>
+
+    <nav class="mobile-menu">
+        <a href="#hero" data-i18n="nav_home">Главная</a>
+        <a href="#story" data-i18n="nav_story">История</a>
+        <a href="#timeline" data-i18n="nav_schedule">Программа</a>
+        <a href="#places" data-i18n="nav_places">Места</a>
+        <a href="#dresscode" data-i18n="nav_dresscode">Дресс-код</a>
+        <a href="#contacts" data-i18n="nav_contacts">Контакты</a>
+    </nav>
+
+    <section id="hero" class="hero">
+        <h1 class="names-title">
+            <img src="Images/names.png" alt="Айгуль и Аскар" class="names-image" data-i18n-img="names">
+        </h1>
+        <h2 class="date" data-i18n="date">14 августа 2026</h2>
+        <p class="quote" data-i18n="quote">Cреди миллионов звезд<br>Мы выбрали светить вместе.</p>
+        <div class="heart">♡</div>
+        <img src="images/couple.jpg" alt="Айгуль и Аскар" class="hero-photo">
+        <div class="countdown-card">
+            <h3 data-i18n="countdown_title">До нашей встречи осталось</h3>
+            <div class="countdown">
+                <div><span id="days">365</span><small data-i18n="days">дней</small></div>
+                <div><span id="hours">12</span><small data-i18n="hours">часов</small></div>
+                <div><span id="minutes">45</span><small data-i18n="minutes">минут</small></div>
+                <div><span id="seconds">32</span><small data-i18n="seconds">секунд</small></div>
+            </div>
+            <button class="main-btn" data-i18n="confirm_btn">Подтвердить присутствие</button>
+        </div>
     </section>
 
-    <section style="text-align: center;">
-      <h2 class="section-title">До свадьбы</h2>
-      <div class="countdown" id="countdown">
-        <div class="countdown-item"><span class="countdown-number" id="days">00</span><div class="countdown-label">дней</div></div>
-        <div class="countdown-item"><span class="countdown-number" id="hours">00</span><div class="countdown-label">часов</div></div>
-        <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><div class="countdown-label">минут</div></div>
-        <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><div class="countdown-label">секунд</div></div>
-      </div>
+    <section id="story" class="story">
+        <h2 data-i18n="story_title">Наша история</h2>
+        <p data-i18n="story_text1">Все началось в институте. Мы были просто знакомыми, проходили мимо друг друга каждый день, еще не догадываясь, что искра любви уже начинает зажигаться.</p>
+        <p data-i18n="story_text2"><br>Однажды, на одном из мероприятий института, мы оказались в одной компании. У нас завязался значимый диалог. Мы сразу почувствовали притяжение. Наше общение было легким и приятным, словно мы знали друг друга всю жизнь.</p>
+        <p data-i18n="story_text3"><br>С тех пор мы стали проводить все больше времени вместе. Часто гуляли по городу, смотрели фильмы и просто болтали до поздней ночи. Вскоре мы осознали, что стали неотъемлемой частью жизни друг друга. Мы были всегда рядом, поддерживали друг друга и делились своими мечтами и планами на будущее.</p>
+        <p data-i18n="story_text4"><br>И если вы читаете это… значит совсем скоро мы официально станем семьей!</p>
     </section>
 
-    <section>
-      <h2 class="section-title">Детали</h2>
-      <div class="details-grid">
-        <div class="detail-card">
-          <div class="detail-icon">📍</div>
-          <h3>Локация</h3>
-          <p>Ресторан «Лель»<br>Зал «Малый Прованс»,<br>г. Уфа, ул. Левобережная, 51к1</p>
-        </div>
-        <div class="detail-card">
-          <div class="detail-icon">🕒</div>
-          <h3>Сбор гостей</h3>
-          <p class="time-highlight">18:00</p>
-          <p>Фуршет и приветствие</p>
-        </div>
-        <div class="detail-card">
-          <div class="detail-icon">💍</div>
-          <h3>Церемония</h3>
-          <p class="time-highlight">10:00</p>
-          <p>ЗАГС<br>Ленинского района г. Уфы</p>
-        </div>
-      </div>
-      <p style="text-align: center; margin-top: 2rem; font-style: italic; color: var(--deep-purple);">
-        Будем благодарны за подтверждение присутствия до 1 июля 2026 года.
-      </p>
+    <!-- Изображение лимона под блоком "Наша история" -->
+    <div class="lemon-container">
+        <img src="Images/lemon.png" alt="Лимон" class="lemon-image" data-i18n-img="lemon">
+    </div>
+
+    <section class="facts">
+        <h2 data-i18n="facts_title">Интересные факты о нас</h2>
+        <div class="fact" data-i18n="fact1">Вместе уже 8 лет</div>
+        <div class="fact" data-i18n="fact2">Говорим друг другу "Я тебя люблю" на 9 языках</div>
+        <div class="fact" data-i18n="fact3">Обожаем кулинарные эксперименты и необычные сочетания специй</div>
+        <div class="fact" data-i18n="fact4">Были активистами в университете и аниматорами в Турции</div>
+        <div class="fact" data-i18n="fact5">Любим организовывать тематические мероприятия и праздники</div>
     </section>
 
-    <section>
-      <h2 class="section-title">Подтверждение</h2>
-      <form class="rsvp-form" id="rsvpForm"
-            action="https://script.google.com/macros/s/AKfycbyG-3Ctv1EMroC3CQ5raIKsZtosir7cWnzr1Sh-wJlVsFtfetA63yWe0En437Rm4Ytm/exec"
-            method="POST">
-
-        <div class="form-row">
-          <div class="form-group">
-            <input type="text" name="name" placeholder="Ваше имя" required>
-          </div>
-          <div class="form-group">
-            <input type="text" name="surname" placeholder="Фамилия" required>
-          </div>
+    <section id="timeline" class="timeline">
+        <h2 data-i18n="timeline_title">Программа дня</h2>
+        <div class="wedding-timeline">
+            <div class="event">
+                <div class="icon">🥂</div>
+                <div class="point"></div>
+                <div class="content">
+                    <div class="time">17:00</div>
+                    <div class="title" data-i18n="event1_title">СБОР ГОСТЕЙ</div>
+                    <div class="subtitle" data-i18n="event1_subtitle">Комплекс отдыха «Лель»</div>
+                </div>
+            </div>
+            <div class="event">
+                <div class="icon">💍</div>
+                <div class="point"></div>
+                <div class="content">
+                    <div class="time">17:30</div>
+                    <div class="title" data-i18n="event2_title">ВЫЕЗДНАЯ РЕГИСТРАЦИЯ</div>
+                </div>
+            </div>
+            <div class="event">
+                <div class="icon">🍽️</div>
+                <div class="point"></div>
+                <div class="content">
+                    <div class="time">18:00</div>
+                    <div class="title" data-i18n="event3_title">БАНКЕТ</div>
+                    <div class="subtitle" data-i18n="event3_subtitle">Зал «Малый Прованс Холл»</div>
+                </div>
+            </div>
+            <div class="event">
+                <div class="icon">🎵</div>
+                <div class="point"></div>
+                <div class="content">
+                    <div class="time">22:30</div>
+                    <div class="title" data-i18n="event4_title">ТАНЦЫ</div>
+                    <div class="subtitle" data-i18n="event4_subtitle">До поздней ночи</div>
+                </div>
+            </div>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <select name="attendance" required>
-              <option value="" disabled selected>Я буду...</option>
-              <option>Один / Одна</option>
-              <option>С парой</option>
-              <option>С семьёй</option>
+    </section>
+
+    <section id="places" class="places">
+        <h2 data-i18n="places_title">Место</h2>
+        <div class="place-card">
+            <img src="images/lel.jpg">
+            <h3 data-i18n="places_name">Комплекс отдыха "Лель"</h3>
+            <p data-i18n="places_address">г. Уфа, ул. Левобережная, 51к1</p>
+        </div>
+    </section>
+
+    <section id="dresscode" class="dresscode">
+        <h2 data-i18n="dresscode_title">Дресс-код</h2>
+        <p data-i18n="colors_title" style="text-align: center;">
+            Мы будем рады, если вы поддержите цветовую палитру нашей свадьбы
+        </p>
+        <div class="pallete-container">
+            <img src="Images/pallete.png" alt="Палитра" class="pallete-image" data-i18n-img="pallete">
+        </div>
+        <p class="dress-intro" data-i18n="dress_note1">
+            Для вдохновения мы собрали несколько примеров образов, которые гармонично впишутся в атмосферу нашего дня
+        </p>
+        <div class="dress-examples">
+            <h3 class="dress-subtitle" data-i18n="dress_women">Для девушек</h3>
+
+            <img src="Images/women.png" alt="Для девушек" class="dress-example-image">
+
+            <h3 class="dress-subtitle" data-i18n="dress_men">Для мужчин</h3>
+
+            <img src="Images/men.png" alt="Для мужчин" class="dress-example-image">
+            <div class="dress-note">
+                <p data-i18n="dress_note">
+                    Для сохранения общей атмосферы праздника просим по возможности избегать белых, неоновых и слишком ярких контрастных оттенков.
+                </p>
+
+                <p data-i18n="dress_note2">
+                    Если подходящего оттенка не найдётся — не переживайте. Для нас важнее всего ваше присутствие и хорошее настроение.
+                </p>
+            </div>
+    </section>
+
+    <section class="photo-section">
+        <h2 data-i18n="photo_title">Фото и видео</h2>
+        <p data-i18n="photo_text1">Нам будет особенно приятно увидеть этот день вашими глазами.</p>
+        <p data-i18n="photo_text2">Делитесь фотографиями и видео в нашем свадебном альбоме.</p>
+        <div class="qr-card">
+            <div>
+                <h4 data-i18n="upload_album">Загрузить фото в альбом</h4>
+                <h4 class="album-link">
+                    <span data-i18n="album_or">(или</span>
+                    <a href="https://cloud.mail.ru/public/TM9F/eABAj6wjg"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       data-i18n="album_click_here">
+                        нажмите сюда
+                    </a>)
+                </h4>
+            </div>
+
+            <img src="images/photo-qr.png" alt="Photo QR" class="qr">
+        </div>
+    </section>
+
+    <section class="guest-form">
+        <h2 data-i18n="form_title">Анкета гостя</h2>
+        <div class="wish-card">
+            <p data-i18n="form_deadline_text">Будем благодарны, если Вы подтвердите свое присутствие и заполните анкету до:</p>
+            <h2>12.07.2026</h2>
+            <p data-i18n="form_help_text">Это поможет нам с любовью подготовить каждую деталь нашего особенного дня</p>
+        </div>
+        <form id="rsvpForm"
+              action="https://script.google.com/macros/s/AKfycbz3xKCMAtu7ZsV77ixW1HjgHUSu7sHBNziOdWZ-Ob2naV6IMZT8S1RtdXfmtzWCdzLv/exec"
+              method="POST">
+            </p>
+            <input type="text" name="name" placeholder="Ваше имя и фамилия" data-i18n-placeholder="name_placeholder">
+            <select name="attendance" data-i18n-select>
+                <option value="will" data-i18n="attend_yes">С радостью буду</option>
+                <option value="wont" data-i18n="attend_no">К сожалению, не смогу</option>
             </select>
-          </div>
+
+            <!-- Блок "Ваши предпочтения" (алкоголь) -->
+            <div class="preferences-block">
+                <label class="preferences-label" data-i18n="preferences_title">Ваши предпочтения</label>
+                <div class="preferences-grid">
+                    <label class="preference-item">
+                        <input type="checkbox" name="preferences" value="champagne">
+                        <span data-i18n="pref_champagne">Шампанское</span>
+                    </label>
+                    <label class="preference-item">
+                        <input type="checkbox" name="preferences" value="red_wine">
+                        <span data-i18n="pref_red_wine">Красное вино</span>
+                    </label>
+                    <label class="preference-item">
+                        <input type="checkbox" name="preferences" value="white_wine">
+                        <span data-i18n="pref_white_wine">Белое вино</span>
+                    </label>
+                    <label class="preference-item">
+                        <input type="checkbox" name="preferences" value="vodka">
+                        <span data-i18n="pref_vodka">Водка</span>
+                    </label>
+                    <label class="preference-item">
+                        <input type="checkbox" name="preferences" value="rum">
+                        <span data-i18n="pref_rum">Ром</span>
+                    </label>
+                    <label class="preference-item">
+                        <input type="checkbox" name="preferences" value="whiskey">
+                        <span data-i18n="pref_whiskey">Виски</span>
+                    </label>
+                    <label class="preference-item">
+                        <input type="checkbox" name="preferences" value="cognac">
+                        <span data-i18n="pref_cognac">Коньяк</span>
+                    </label>
+                    <label class="preference-item">
+                        <input type="checkbox" name="preferences" value="no_alcohol">
+                        <span data-i18n="pref_no_alcohol">Не пью алкоголь</span>
+                    </label>
+                </div>
+            </div>
+
+            <input type="text" name="song" placeholder="Любимая песня" data-i18n-placeholder="song_placeholder">
+            <textarea rows="5" name="wishes" placeholder="Ваши пожелания молодожёнам" data-i18n-placeholder="wishes_placeholder"></textarea>
+            <button type="submit" class="main-btn" data-i18n="submit_btn">Отправить ответ</button>
+        </form>
+    </section>
+
+    <section class="contacts" id="contacts">
+        <h2 data-i18n="contacts_title">Контакты</h2>
+        <div class="contact-card">
+            <h3 data-i18n="coordinator">Координатор</h3>
+            <p data-i18n="coordinator_name">Светлана Тяпова</p>
+            <a href="tel:+79170481960">+7 917 048-19-60</a>
         </div>
-        <textarea name="message" rows="3" placeholder="Пожелания по алкоголю или аллергия на еду..."></textarea>
-        <button type="submit" class="btn">Отправить</button>
-      </form>
+        <div class="contact-note" data-i18n="contact_note">В день свадьбы, пожалуйста, по всем организационным вопросам обращайтесь к координатору. Мы будем заняты друг другом и можем не сразу ответить на звонок.</div>
     </section>
 
     <footer>
-      <p>💛 Аскар & Айгуль · С любовью ждём вас!</p>
-      <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--sage-green);">#А&А2026</p>
+        <img src="Images/endname.png" alt="С любовью, Айгуль и Аскар" class="footer-image" data-i18n-img="endname">
     </footer>
-  </div>
 
-  <script>
-    (function() {
-      // Таймер до 14.08.2026 18:00
-      const weddingDate = new Date('2026-08-14T18:00:00').getTime();
+    <!-- Дополнительное изображение в самом низу -->
+    <div class="bottom-decor">
+        <img src="Images/endlem.png" alt="Декор" class="bottom-image" data-i18n-img="endlem">
+    </div>
 
-      function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = weddingDate - now;
-        if (distance < 0) {
-          document.getElementById('days').textContent = '00';
-          document.getElementById('hours').textContent = '00';
-          document.getElementById('minutes').textContent = '00';
-          document.getElementById('seconds').textContent = '00';
-          return;
-        }
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        document.getElementById('days').textContent = days < 10 ? '0' + days : days;
-        document.getElementById('hours').textContent = hours < 10 ? '0' + hours : hours;
-        document.getElementById('minutes').textContent = minutes < 10 ? '0' + minutes : minutes;
-        document.getElementById('seconds').textContent = seconds < 10 ? '0' + seconds : seconds;
-      }
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-
-      // Лепестки
-      const petalsContainer = document.getElementById('petals');
-      const colors = ['#ac91c4', '#d2ac4b', '#ffd51e', '#7c678e', '#668060'];
-      function createPetal() {
-        const petal = document.createElement('div');
-        petal.classList.add('petal');
-        const size = Math.floor(Math.random() * 14) + 10;
-        petal.style.width = size + 'px';
-        petal.style.height = size + 'px';
-        petal.style.left = Math.random() * 100 + '%';
-        petal.style.background = colors[Math.floor(Math.random() * colors.length)];
-        petal.style.animationDuration = Math.random() * 8 + 10 + 's';
-        petal.style.opacity = Math.random() * 0.4 + 0.15;
-        petalsContainer.appendChild(petal);
-        setTimeout(() => { if (petal && petal.parentNode) petal.remove(); }, 18000);
-      }
-      setInterval(createPetal, 700);
-      for (let i = 0; i < 8; i++) setTimeout(createPetal, i * 150);
-
-      // Асинхронная отправка формы
-      document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        var form = this;
-        var formData = new FormData(form);
-        var params = new URLSearchParams(formData).toString();
-
-        fetch(form.action, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: params
-        })
-        .then(function(response) {
-          if (response.ok) {
-            alert('✨ Спасибо! Ваше подтверждение получено. Ждём вас!');
-            form.reset();
-          } else {
-            alert('⚠️ Что-то пошло не так. Попробуйте ещё раз.');
-          }
-        })
-        .catch(function() {
-          alert('⚠️ Ошибка соединения. Проверьте интернет и попробуйте снова.');
-        });
-      });
-
-      // Кнопка "🍂" – управление лепестками
-      let petalsActive = true;
-      const musicBtn = document.getElementById('musicToggle');
-      musicBtn.addEventListener('click', function() {
-        petalsActive = !petalsActive;
-        if (petalsActive) {
-          petalsContainer.style.display = 'block';
-          musicBtn.textContent = '🍂';
-          musicBtn.style.background = 'rgba(255,255,255,0.9)';
-        } else {
-          petalsContainer.style.display = 'none';
-          musicBtn.textContent = '❌';
-          musicBtn.style.background = '#f0e6d2';
-        }
-      });
-    })();
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
