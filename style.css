@@ -848,16 +848,15 @@ p {
         max-width: 750px;
         margin: 0 auto;
     }
+
+    .hero h1 {
+        font-size: 72px;
+    }
+
+    h2 {
+        font-size: 48px;
+    }
 }
-
-        .hero h1 {
-            font-size: 72px;
-        }
-
-        h2 {
-            font-size: 48px;
-        }
-    
     /* --------------------
    МОБИЛЬНЫЕ КОРРЕКТИРОВКИ ДЛЯ FOOTER
 --------------------- */
