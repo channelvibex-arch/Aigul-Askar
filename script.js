@@ -5,17 +5,27 @@
 const burger = document.querySelector('.burger');
 const menu = document.querySelector('.mobile-menu');
 
+function closeMenu() {
+    menu.style.display = 'none';
+    burger.textContent = '☰';
+}
+
+function openMenu() {
+    menu.style.display = 'flex';
+    burger.textContent = '✕';
+}
+
 burger.addEventListener('click', () => {
     if (menu.style.display === 'flex') {
-        menu.style.display = 'none';
+        closeMenu();
     } else {
-        menu.style.display = 'flex';
+        openMenu();
     }
 });
 
 document.querySelectorAll('.mobile-menu a').forEach(link => {
     link.addEventListener('click', () => {
-        menu.style.display = 'none';
+        closeMenu();
     });
 });
 
@@ -318,6 +328,8 @@ function setLanguage(lang) {
     const imgMappings = {
         'names': lang === 'en' ? 'Images/names_en.webp' : 'Images/names.webp',
         'endname': lang === 'en' ? 'Images/endname_en.webp' : 'Images/endname.webp',
+        'lemon': lang === 'en' ? 'Images/lemon_en.webp' : 'Images/lemon.webp',
+        'endlem': lang === 'en' ? 'Images/endlem_en.webp' : 'Images/endlem.webp',
         'pallete': lang === 'en' ? 'Images/pallete_en.webp' : 'Images/pallete.webp'
     };
     document.querySelectorAll('[data-i18n-img]').forEach(el => {
