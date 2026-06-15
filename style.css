@@ -188,17 +188,21 @@ body {
 }
 
 .burger {
-    position: absolute;
+    position: fixed;
     right: 24px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 24px;
     border: none;
     background: transparent;
     font-size: 30px;
     color: var(--lavender-dark);
     cursor: pointer;
-    z-index: 1000;
+    z-index: 1001;
+    transition: transform 0.2s ease;
 }
+
+    .burger:hover {
+        transform: scale(1.1);
+    }
 
 .mobile-menu {
     display: none;
@@ -274,40 +278,41 @@ p {
     width: 500px;
     display: inline-block;
 }
-    .pallete-container {
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 900px;
-        max-width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-top: 40px;
-    }
 
-    .pallete-image {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-    /* --------------------
+.pallete-container {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.pallete-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+/* --------------------
    HERO
 --------------------- */
-    .hero {
-        text-align: center;
-        padding-top: 20px;
-    }
+.hero {
+    text-align: center;
+    padding-top: 20px;
+}
 
-    .names-title {
-        margin: 0;
-        line-height: 1;
-    }
+.names-title {
+    margin: 0;
+    line-height: 1;
+}
 
-    .names-image {
-        max-width: 90%;
-        height: auto;
-        display: inline-block;
-    }
+.names-image {
+    max-width: 90%;
+    height: auto;
+    display: inline-block;
+}
 
 .date {
     font-family: 'Cormorant Garamond', serif;
@@ -319,440 +324,440 @@ p {
     margin: 20px 0;
 }
 
-    .quote {
-        margin-top: 24px;
-        font-style: italic;
-        max-width: 260px;
-        margin-left: auto;
-        margin-right: auto;
+.quote {
+    margin-top: 24px;
+    font-style: italic;
+    max-width: 260px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.heart {
+    font-size: 40px;
+    margin: 20px 0;
+    color: var(--lavender);
+}
+
+.hero-photo {
+    width: 100%;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    margin-top: 25px;
+    object-fit: cover;
+}
+
+.countdown-card {
+    background: white;
+    margin-top: 24px;
+    padding: 24px;
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+}
+
+    .countdown-card h3 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: var(--lavender-dark);
     }
 
-    .heart {
-        font-size: 40px;
-        margin: 20px 0;
-        color: var(--lavender);
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+    .countdown div {
+        background: var(--ivory);
+        border-radius: 18px;
+        padding: 14px;
     }
 
-    .hero-photo {
-        width: 100%;
-        border-radius: 30px;
-        box-shadow: var(--shadow);
-        margin-top: 25px;
-        object-fit: cover;
+    .countdown span {
+        display: block;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--lavender-dark);
     }
 
-    .countdown-card {
-        background: white;
-        margin-top: 24px;
-        padding: 24px;
-        border-radius: 28px;
-        box-shadow: var(--shadow);
+    .countdown small {
+        color: var(--text-light);
     }
-
-        .countdown-card h3 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: var(--lavender-dark);
-        }
-
-    .countdown {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
-        margin-bottom: 25px;
-    }
-
-        .countdown div {
-            background: var(--ivory);
-            border-radius: 18px;
-            padding: 14px;
-        }
-
-        .countdown span {
-            display: block;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--lavender-dark);
-        }
-
-        .countdown small {
-            color: var(--text-light);
-        }
-    /* --------------------
+/* --------------------
    STORY
 --------------------- */
-    .story p {
-        text-align: center;
-        max-width: 500px;
-        margin: auto;
-        color: var(--text);
-    }
-    /* --------------------
+.story p {
+    text-align: center;
+    max-width: 500px;
+    margin: auto;
+    color: var(--text);
+}
+/* --------------------
    FACTS
 --------------------- */
-    .fact {
-        background: white;
-        padding: 18px;
-        border-radius: 20px;
-        margin-bottom: 15px;
-        box-shadow: var(--shadow);
-        text-align: center;
-        font-weight: 500;
-    }
-    /* --------------------
+.fact {
+    background: white;
+    padding: 18px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    font-weight: 500;
+}
+/* --------------------
    TIMELINE
 --------------------- */
-    .timeline {
-        position: relative;
-    }
+.timeline {
+    position: relative;
+}
 
-        .timeline h2 {
-            margin-bottom: 60px;
-        }
-
-    .wedding-timeline {
-        position: relative;
-        max-width: 700px;
-        margin: 0 auto;
-    }
-
-        .wedding-timeline::before {
-            content: "";
-            position: absolute;
-            left: 95px;
-            top: 55px;
-            bottom: 55px;
-            width: 2px;
-            background: var(--lavender);
-        }
-
-    .event {
-        position: relative;
-        display: flex;
-        align-items: center;
+    .timeline h2 {
         margin-bottom: 60px;
     }
 
-        .event:last-child {
-            margin-bottom: 0;
-        }
+.wedding-timeline {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+    .wedding-timeline::before {
+        content: "";
+        position: absolute;
+        left: 95px;
+        top: 55px;
+        bottom: 55px;
+        width: 2px;
+        background: var(--lavender);
+    }
+
+.event {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+    .event:last-child {
+        margin-bottom: 0;
+    }
+
+.icon {
+    width: 120px;
+    text-align: center;
+    font-size: 42px;
+    color: var(--lavender);
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.point {
+    position: absolute;
+    left: 91px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--lavender);
+    z-index: 3;
+}
+
+.event .content {
+    padding-left: 35px;
+    text-align: left;
+    background: transparent;
+    box-shadow: none;
+}
+
+.event .time {
+    display: block;
+    min-width: auto;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: transparent;
+    color: var(--lavender-dark);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.event .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--lavender-dark);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.event .subtitle {
+    margin-top: 6px;
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .wedding-timeline::before {
+        left: 95px;
+    }
 
     .icon {
-        width: 120px;
-        text-align: center;
-        font-size: 42px;
-        color: var(--lavender);
-        flex-shrink: 0;
-        z-index: 2;
+        width: 80px;
+        font-size: 34px;
     }
 
     .point {
-        position: absolute;
         left: 91px;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--lavender);
-        z-index: 3;
     }
 
     .event .content {
-        padding-left: 35px;
-        text-align: left;
-        background: transparent;
-        box-shadow: none;
+        padding-left: 24px;
     }
 
     .event .time {
-        display: block;
-        min-width: auto;
-        width: auto;
-        height: auto;
-        border-radius: 0;
-        background: transparent;
-        color: var(--lavender-dark);
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 34px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        margin-bottom: 6px;
+        font-size: 28px;
     }
 
     .event .title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 24px;
-        font-weight: 700;
-        color: var(--lavender-dark);
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        line-height: 1.1;
+        font-size: 20px;
     }
 
     .event .subtitle {
-        margin-top: 6px;
-        font-size: 16px;
-        color: var(--text-light);
-        line-height: 1.5;
+        font-size: 15px;
     }
-
-    @media (max-width: 768px) {
-        .wedding-timeline::before {
-            left: 95px;
-        }
-
-        .icon {
-            width: 80px;
-            font-size: 34px;
-        }
-
-        .point {
-            left: 91px;
-        }
-
-        .event .content {
-            padding-left: 24px;
-        }
-
-        .event .time {
-            font-size: 28px;
-        }
-
-        .event .title {
-            font-size: 20px;
-        }
-
-        .event .subtitle {
-            font-size: 15px;
-        }
-    }
-    /* --------------------
+}
+/* --------------------
    PLACES
 --------------------- */
-    .place-card {
-        background: white;
-        border-radius: 28px;
-        overflow: hidden;
-        margin-bottom: 28px;
-        box-shadow: var(--shadow);
+.place-card {
+    background: white;
+    border-radius: 28px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+}
+
+    .place-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
     }
 
-        .place-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
+    .place-card h3 {
+        padding: 20px 20px 10px;
+        color: var(--lavender-dark);
+    }
 
-        .place-card h3 {
-            padding: 20px 20px 10px;
-            color: var(--lavender-dark);
-        }
-
-        .place-card p {
-            padding: 0 20px 15px;
-        }
-    /* --------------------
+    .place-card p {
+        padding: 0 20px 15px;
+    }
+/* --------------------
    DRESSCODE
 --------------------- */
-    .palette {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 18px;
-    }
+.palette {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
 
-    .color {
-        text-align: center;
-    }
+.color {
+    text-align: center;
+}
 
-    .circle {
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        margin: auto auto 10px;
-    }
+.circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: auto auto 10px;
+}
 
-    .butter {
-        background: #F8F3E8;
-        border: 1px solid #eee;
-    }
+.butter {
+    background: #F8F3E8;
+    border: 1px solid #eee;
+}
 
-    .lemon {
-        background: #F5E4A8;
-    }
+.lemon {
+    background: #F5E4A8;
+}
 
-    .lavender {
-        background: #B7A1D3;
-    }
+.lavender {
+    background: #B7A1D3;
+}
 
-    .sage {
-        background: #A8B49A;
-    }
+.sage {
+    background: #A8B49A;
+}
 
-    .chocolate {
-        background: #B89C7D;
-    }
+.chocolate {
+    background: #B89C7D;
+}
 
-    .beige {
-        background: #DCCDB8;
-    }
+.beige {
+    background: #DCCDB8;
+}
 
-    .dress-note {
-        background: white;
-        margin-top: 30px;
-        padding: 25px;
-        border-radius: 24px;
-        text-align: center;
-        box-shadow: var(--shadow);
-    }
-    /* --------------------
+.dress-note {
+    background: white;
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+/* --------------------
    WISHES
 --------------------- */
-    .wish-card {
-        background: white;
-        padding: 30px;
-        border-radius: 24px;
-        box-shadow: var(--shadow);
-        text-align: center;
-    }
+.wish-card {
+    background: white;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
 
-        .wish-card p + p {
-            margin-top: 15px;
-        }
-    /* --------------------
-   PLAYLIST
---------------------- */
-    .playlist {
-        text-align: center;
-    }
-
-        .playlist p {
-            margin-bottom: 14px;
-        }
-    /* --------------------
-   PHOTO SECTION
---------------------- */
-    .photo-section {
-        text-align: center;
-    }
-
-    .qr-card {
-        background: white;
-        border-radius: 24px;
-        padding: 25px;
-        margin-top: 24px;
-        box-shadow: var(--shadow);
-    }
-
-    .qr {
-        width: 180px;
+    .wish-card p + p {
         margin-top: 15px;
     }
-    /* --------------------
+/* --------------------
+   PLAYLIST
+--------------------- */
+.playlist {
+    text-align: center;
+}
+
+    .playlist p {
+        margin-bottom: 14px;
+    }
+/* --------------------
+   PHOTO SECTION
+--------------------- */
+.photo-section {
+    text-align: center;
+}
+
+.qr-card {
+    background: white;
+    border-radius: 24px;
+    padding: 25px;
+    margin-top: 24px;
+    box-shadow: var(--shadow);
+}
+
+.qr {
+    width: 180px;
+    margin-top: 15px;
+}
+/* --------------------
    ПРЕДПОЧТЕНИЯ (АЛКОГОЛЬ)
 --------------------- */
-    .preferences-block {
-        margin-bottom: 16px;
+.preferences-block {
+    margin-bottom: 16px;
+}
+
+.preferences-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--lavender-dark);
+    font-size: 16px;
+}
+
+.preferences-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 20px;
+    background: white;
+    padding: 18px;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+}
+
+.preference-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    color: var(--text);
+}
+
+    .preference-item input {
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        accent-color: var(--lavender);
+        box-shadow: none;
+        padding: 0;
     }
 
-    .preferences-label {
-        display: block;
-        font-weight: 600;
-        margin-bottom: 12px;
-        color: var(--lavender-dark);
-        font-size: 16px;
-    }
-
+@media (max-width: 480px) {
     .preferences-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px 20px;
-        background: white;
-        padding: 18px;
-        border-radius: 18px;
-        box-shadow: var(--shadow);
+        gap: 10px;
     }
 
     .preference-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-        font-size: 15px;
-        color: var(--text);
+        font-size: 14px;
     }
-
-        .preference-item input {
-            width: 18px;
-            height: 18px;
-            margin: 0;
-            accent-color: var(--lavender);
-            box-shadow: none;
-            padding: 0;
-        }
-
-    @media (max-width: 480px) {
-        .preferences-grid {
-            gap: 10px;
-        }
-
-        .preference-item {
-            font-size: 14px;
-        }
-    }
-    /* --------------------
+}
+/* --------------------
    FORM
 --------------------- */
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
 
-    input, select, textarea {
-        width: 100%;
-        border: none;
-        outline: none;
-        background: white;
-        padding: 18px;
-        border-radius: 18px;
-        font-family: 'Manrope', sans-serif;
-        box-shadow: var(--shadow);
-        font-size: 15px;
-    }
+input, select, textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: white;
+    padding: 18px;
+    border-radius: 18px;
+    font-family: 'Manrope', sans-serif;
+    box-shadow: var(--shadow);
+    font-size: 15px;
+}
 
-    textarea {
-        resize: none;
-    }
-    /* --------------------
+textarea {
+    resize: none;
+}
+/* --------------------
    CONTACTS
 --------------------- */
-    .contact-card {
-        background: white;
-        padding: 24px;
-        border-radius: 24px;
-        box-shadow: var(--shadow);
-        margin-bottom: 20px;
-        text-align: center;
+.contact-card {
+    background: white;
+    padding: 24px;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+    .contact-card h3 {
+        color: var(--lavender-dark);
+        margin-bottom: 10px;
     }
 
-        .contact-card h3 {
-            color: var(--lavender-dark);
-            margin-bottom: 10px;
-        }
-
-        .contact-card a {
-            text-decoration: none;
-            color: var(--sage);
-            font-weight: 600;
-        }
-
-    .contact-note {
-        margin-top: 25px;
-        background: white;
-        border-radius: 24px;
-        padding: 25px;
-        text-align: center;
-        box-shadow: var(--shadow);
+    .contact-card a {
+        text-decoration: none;
+        color: var(--sage);
+        font-weight: 600;
     }
+
+.contact-note {
+    margin-top: 25px;
+    background: white;
+    border-radius: 24px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
 
 .dress-examples {
     text-align: center;
@@ -791,56 +796,56 @@ p {
         text-decoration: underline;
         font-weight: 700;
     }
-    /* --------------------
-   FOOTER (картинка endname.png)
+/* --------------------
+   FOOTER (картинка endname.webp)
 --------------------- */
-    footer {
-        min-height: 10vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        box-sizing: border-box;
-        text-align: center;
-        width: 100%;
-        max-width: 100%;
-    }
+footer {
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+}
 
-    .footer-image {
-        width: 100%;
-        max-width: 1000px;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-    }
-    /* --------------------
-   НИЖНЕЕ ДЕКОРАТИВНОЕ ИЗОБРАЖЕНИЕ endlem.png
+.footer-image {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+/* --------------------
+   НИЖНЕЕ ДЕКОРАТИВНОЕ ИЗОБРАЖЕНИЕ endlem.webp
 --------------------- */
-    .bottom-decor {
-        text-align: center;
-        padding: 20px 24px 40px;
-    }
+.bottom-decor {
+    text-align: center;
+    padding: 20px 24px 40px;
+}
 
-    .bottom-image {
-        max-width: 100%;
-        height: auto;
-        width: auto;
-        display: inline-block;
-    }
-    /* --------------------
+.bottom-image {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    display: inline-block;
+}
+/* --------------------
    ANIMATION
 --------------------- */
-    .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity .7s ease, transform .7s ease;
-    }
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .7s ease, transform .7s ease;
+}
 
-        .fade-in.show {
-            opacity: 1;
-            transform: none;
-        }
-    /* --------------------
+    .fade-in.show {
+        opacity: 1;
+        transform: none;
+    }
+/* --------------------
    LARGE MOBILE (основной контейнер)
 --------------------- */
 @media (min-width: 769px) {
@@ -857,18 +862,18 @@ p {
         font-size: 48px;
     }
 }
-    /* --------------------
+/* --------------------
    МОБИЛЬНЫЕ КОРРЕКТИРОВКИ ДЛЯ FOOTER
 --------------------- */
-    @media (max-width: 768px) {
-        .footer-image {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            transform: scale(1.2);
-        }
+@media (max-width: 768px) {
+    .footer-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        transform: scale(1.2);
     }
-    /* Увеличение картинки с именами для английской версии */
+}
+/* Увеличение картинки с именами для английской версии */
 body.lang-en .names-image {
     width: 107%;
     max-width: none;
@@ -881,17 +886,16 @@ body {
     overflow-x: hidden;
 }
 
-    section,
-    header,
-    footer {
-        width: 100%;
-        max-width: 100%;
-    }
+section,
+header,
+footer {
+    width: 100%;
+    max-width: 100%;
+}
 
-    @media (max-width: 768px) {
-        .pallete-image {
-            width: 90vw;
-            max-width: none;
-        }
+@media (max-width: 768px) {
+    .pallete-image {
+        width: 90vw;
+        max-width: none;
     }
-
+}
