@@ -202,6 +202,7 @@
             </p>
             <input type="text" name="name" placeholder="Ваше имя и фамилия" data-i18n-placeholder="name_placeholder">
             <select name="attendance" data-i18n-select>
+                <option value="" disabled selected hidden data-i18n="attend_placeholder">Будете ли вы присутствовать?</option>
                 <option value="will" data-i18n="attend_yes">С радостью буду</option>
                 <option value="wont" data-i18n="attend_no">К сожалению, не смогу</option>
             </select>
@@ -269,6 +270,9 @@
     <div class="bottom-decor">
         <img src="Images/endlem.webp" loading="lazy" alt="Декор" class="bottom-image" data-i18n-img="endlem">
     </div>
+
+    <!-- Контейнер для всплывающих уведомлений (toast) -->
+    <div id="toast-container" aria-live="polite"></div>
 
     <script src="script.js"></script>
 </body>
