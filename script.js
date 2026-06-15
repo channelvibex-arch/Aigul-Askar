@@ -443,6 +443,9 @@ document.getElementById('rsvpForm').addEventListener('submit', function (e) {
         ru: {
             needName: 'Пожалуйста, укажите ваше имя и фамилию',
             needAttendance: 'Пожалуйста, выберите, будете ли вы присутствовать',
+            needPreferences: 'Пожалуйста, выберите хотя бы одно предпочтение',
+            needSong: 'Пожалуйста, укажите любимую песню',
+            needWishes: 'Пожалуйста, напишите пожелания молодожёнам',
             sending: 'Отправка…',
             success: 'Спасибо! Анкета отправлена ❤️',
             error: 'Ошибка отправки. Попробуйте ещё раз'
@@ -450,6 +453,9 @@ document.getElementById('rsvpForm').addEventListener('submit', function (e) {
         en: {
             needName: 'Please enter your full name',
             needAttendance: 'Please choose whether you will attend',
+            needPreferences: 'Please select at least one preference',
+            needSong: 'Please enter your favorite song',
+            needWishes: 'Please write your wishes for the newlyweds',
             sending: 'Sending…',
             success: 'Thank you! The form has been sent ❤️',
             error: 'Sending failed. Please try again'
@@ -459,6 +465,9 @@ document.getElementById('rsvpForm').addEventListener('submit', function (e) {
     // --- ВАЛИДАЦИЯ ---
     const nameValue = (form.elements['name'].value || '').trim();
     const attendanceValue = form.elements['attendance'].value;
+    const checkedPreferences = document.querySelectorAll('input[name="preferences"]:checked');
+    const songValue = (form.elements['song'].value || '').trim();
+    const wishesValue = (form.elements['wishes'].value || '').trim();
 
     if (!nameValue) {
         showToast(msg.needName, 'error', '⚠️');
@@ -468,6 +477,21 @@ document.getElementById('rsvpForm').addEventListener('submit', function (e) {
     if (!attendanceValue) {
         showToast(msg.needAttendance, 'error', '⚠️');
         form.elements['attendance'].focus();
+        return;
+    }
+    if (checkedPreferences.length === 0) {
+        showToast(msg.needPreferences, 'error', '⚠️');
+        document.querySelector('.preferences-grid').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+    }
+    if (!songValue) {
+        showToast(msg.needSong, 'error', '⚠️');
+        form.elements['song'].focus();
+        return;
+    }
+    if (!wishesValue) {
+        showToast(msg.needWishes, 'error', '⚠️');
+        form.elements['wishes'].focus();
         return;
     }
 
