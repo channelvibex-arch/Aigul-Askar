@@ -398,4 +398,108 @@ function showToast(message, type = 'info', icon = '') {
     toast.className = `toast ${type}`;
 
     const iconHTML = icon ? `<span class="toast-icon">${icon}</span>` : '';
-  
+    toast.innerHTML = `${iconHTML}<span class="toast-message">${message}</span>`;
+
+    container.appendChild(toast);
+
+    // Появление
+    requestAnimationFrame(() => {
+        toast.classList.add('show');
+    });
+
+    // Авто-закрытие
+    const duration = type === 'error' ? 4500 : 3500;
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+    }, duration);
+
+    // Закрытие по клику
+    toast.addEventListener('click', () => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+    });
+}
+
+/* ------------------------
+   ФОРМА ГОСТЯ (RSVP)
+------------------------- */
+
+document.getElementById('rsvpForm').addEventListener('submit', function (e) {
+
+    e.preventDefault();
+
+    const form = this;
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    // Защита от повторной отправки: если уже отправляется — игнорируем
+    if (submitBtn.dataset.submitting === 'true') {
+        return;
+    }
+
+    // Текущий язык для сообщений валидации
+    const lang = localStorage.getItem('lang') || 'ru';
+    const msg = {
+        ru: {
+            needName: 'Пожалуйста, укажите ваше имя и фамилию',
+            needAttendance: 'Пожалуйста, выберите, будете ли вы присутствовать',
+            sending: 'Отправка…',
+            success: 'Спасибо! Анкета отправлена ❤️',
+            error: 'Ошибка отправки. Попробуйте ещё раз'
+        },
+        en: {
+            needName: 'Please enter your full name',
+            needAttendance: 'Please choose whether you will attend',
+            sending: 'Sending…',
+            success: 'Thank you! The form has been sent ❤️',
+            error: 'Sending failed. Please try again'
+        }
+    }[lang];
+
+    // --- ВАЛИДАЦИЯ ---
+    const nameValue = (form.elements['name'].value || '').trim();
+    const attendanceValue = form.elements['attendance'].value;
+
+    if (!nameValue) {
+        showToast(msg.needName, 'error', '⚠️');
+        form.elements['name'].focus();
+        return;
+    }
+    if (!attendanceValue) {
+        showToast(msg.needAttendance, 'error', '⚠️');
+        form.elements['attendance'].focus();
+        return;
+    }
+
+    const formData = new FormData(form);
+
+    const preferences = [];
+
+    document.querySelectorAll('input[name="preferences"]:checked')
+        .forEach(el => preferences.push(el.value));
+
+    formData.set('preferences', preferences.join(', '));
+
+    // --- БЛОКИРОВКА КНОПКИ + ВИЗУАЛЬНАЯ ОБРАТНАЯ СВЯЗЬ ---
+    const originalText = submitBtn.textContent;
+    submitBtn.dataset.submitting = 'true';
+    submitBtn.disabled = true;
+    submitBtn.textContent = msg.sending;
+
+    fetch(form.action, {
+        method: 'POST',
+        body: formData
+    })
+        .then(() => {
+            showToast(msg.success, 'success', '💌');
+            form.reset();
+        })
+        .catch(() => {
+            showToast(msg.error, 'error', '😕');
+        })
+        .finally(() => {
+            submitBtn.dataset.submitting = 'false';
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        });
+});
