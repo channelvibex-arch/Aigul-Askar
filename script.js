@@ -200,6 +200,7 @@ const translations = {
         form_deadline_text: "Будем благодарны, если Вы подтвердите свое присутствие и заполните анкету до:",
         form_help_text: "Это поможет нам с любовью подготовить каждую деталь нашего особенного дня",
         name_placeholder: "Ваше имя и фамилия",
+        attend_placeholder: "Будете ли вы присутствовать?",
         attend_yes: "С радостью буду",
         attend_no: "К сожалению, не смогу",
         song_placeholder: "Любимая песня",
@@ -282,6 +283,7 @@ const translations = {
         form_deadline_text: "We would be grateful if you confirm your attendance and fill out the form by:",
         form_help_text: "This will help us lovingly prepare every detail of our special day",
         name_placeholder: "Your full name",
+        attend_placeholder: "Will you be attending?",
         attend_yes: "I will gladly attend",
         attend_no: "Unfortunately, I cannot attend",
         song_placeholder: "Favorite song",
@@ -383,29 +385,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-document.getElementById('rsvpForm').addEventListener('submit', function (e) {
+/* ------------------------
+   TOAST (всплывающие уведомления)
+------------------------- */
 
-    e.preventDefault();
+// Показывает уведомление. type: 'success' | 'error' | 'info'
+function showToast(message, type = 'info', icon = '') {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
 
-    const form = this;
-    const formData = new FormData(form);
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
 
-    const preferences = [];
-
-    document.querySelectorAll('input[name="preferences"]:checked')
-        .forEach(el => preferences.push(el.value));
-
-    formData.set('preferences', preferences.join(', '));
-
-    fetch(form.action, {
-        method: 'POST',
-        body: formData
-    })
-        .then(() => {
-            alert('Спасибо! Анкета отправлена ❤️');
-            form.reset();
-        })
-        .catch(() => {
-            alert('Ошибка отправки');
-        });
-});
+    const iconHTML = icon ? `<span class="toast-icon">${icon}</span>` : '';
+  
